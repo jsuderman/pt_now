@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -29,6 +30,13 @@ class IndexState extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc()
+        .set({"name": "justin"}).then((_) {
+      print("success!");
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: Text('PT Now'),
